@@ -1,0 +1,23 @@
+.card-container {
+    width: 14.2857143%;
+    height: 100px;
+}
+
+.date-text {
+    cursor: pointer;
+}
+
+.content-para {
+    margin: 0px;
+    cursor: pointer;
+}
+
+.content-para-2 {
+    margin: 0px;
+    display: flex;
+}
+
+.more-text {
+    color: blue;
+    cursor: pointer;
+}

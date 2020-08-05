@@ -1,0 +1,20 @@
+.calendar-container {
+    border: 1px black solid;
+}
+
+.today-date-card {
+    border: 2px blue solid;
+    width: 14.2857143%;
+    height: 140px;
+}
+
+.date-card {
+    width: 14.2857143%;
+    height: 140px;
+}
+
+.blocked-date-card {
+    background-color: grey;
+    width: 14.2857143%;
+    height: 140px;
+}
