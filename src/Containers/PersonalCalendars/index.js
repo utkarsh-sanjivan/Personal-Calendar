@@ -2,12 +2,14 @@ import  React from 'react' ;
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
 import * as dateFns from 'date-fns';
+import { uuid } from 'uuidv4';
 import Calendar from './../../Components/Calendar/index';
 import Header from './../../Components/Header/index';
 import DateModal from './../../Components/DateModal/index';
 import AddEventModal from './../../Components/AddEventModal/index';
 import EventModal from './../../Components/EventModal/index';
 import * as DateEventActions from '../../store/DateEvent/actions';
+import withFirebase from './../../Components/Firebase/index';
 import { getDaysInMonth } from './../../Utils/dateFromatter';
 import './style.css';
 
@@ -61,7 +63,16 @@ class PersonalCalendars extends React.Component {
     }
 
     handleSaveEvent = event => {
-        this.props.dateEventActions.addEvent({ event, dateText: this.state.selectedDate.dateText });
+        const eventId = uuid();
+        this.props.firebase.database().ref('events/' + eventId).set({
+            dateText: this.state.selectedDate.dateText,
+            description: event.description,
+            duration: event.duration,
+            eventType: event.eventType,
+            name: event.name,
+            time: event.time,
+        });
+        // this.props.dateEventActions.addEvent({ event, dateText: this.state.selectedDate.dateText });
         this.setState(prevState=>({ 
             showAddEventModal: !prevState.showAddEventModal,
             selectedDate: !prevState.showAddEventModal? this.state.selectedDate: {},
@@ -69,12 +80,13 @@ class PersonalCalendars extends React.Component {
         }));
     }
 
-    handleEditEvent = event => {
-        
-    }
-
-    handleDeleteEvent = event => {
-        
+    fetchAllEvents = () => {
+        const dateEventActions = this.props.dateEventActions;
+        const eventRef = this.props.firebase.database().ref('events');
+        eventRef.orderByValue().on("value", function(snapshot) {
+            const eventsObj = snapshot.val();
+            dateEventActions.saveFetchedEvents(Object.keys(eventsObj).map(key => ({ ...eventsObj[key], key })));
+        });
     }
 
     render() {
@@ -116,6 +128,7 @@ class PersonalCalendars extends React.Component {
     }
 
     componentDidMount() {
+        this.fetchAllEvents();
         this.props.dateEventActions.getMonthDateArray(getDaysInMonth(new Date()));
     }
 }
@@ -130,4 +143,4 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PersonalCalendars);
+export default connect(mapStateToProps, mapDispatchToProps)(withFirebase(PersonalCalendars));
