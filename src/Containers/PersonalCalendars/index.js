@@ -1,10 +1,13 @@
 import  React from 'react' ;
+import { connect } from "react-redux";
+import { bindActionCreators } from 'redux';
 import * as dateFns from 'date-fns';
 import Calendar from './../../Components/Calendar/index';
 import Header from './../../Components/Header/index';
 import DateModal from './../../Components/DateModal/index';
 import AddEventModal from './../../Components/AddEventModal/index';
 import EventModal from './../../Components/EventModal/index';
+import * as DateEventActions from '../../store/DateEvent/actions';
 import { getDaysInMonth } from './../../Utils/dateFromatter';
 import './style.css';
 
@@ -13,26 +16,27 @@ class PersonalCalendars extends React.Component {
         super(props);
         this.state = {
             currentDate: new Date(),
-            datesMonthArray: getDaysInMonth(new Date()),
             selectedDate: {},
             showAddEventModal: false,
             showDateModal: false,
             showEventModal: false,
+            switchAddEventModalState: false,
         };
     }
 
     getToday = () => {
         this.setState({
             currentDate: new Date(),
-            datesMonthArray: getDaysInMonth(new Date()),
         });
+        this.props.dateEventActions.getMonthDateArray(getDaysInMonth(new Date()));
     }
 
     navMonth = (ditection) => {
         const currentDate = ditection === 'prev'? 
             new Date(dateFns.format(dateFns.subMonths(this.state.currentDate, 1), 'MM/dd/yyyy'))
             : new Date(dateFns.format(dateFns.addMonths(this.state.currentDate, 1), 'MM/dd/yyyy'));
-        this.setState({ currentDate, datesMonthArray: getDaysInMonth(currentDate), });
+        this.setState({ currentDate });
+        this.props.dateEventActions.getMonthDateArray(getDaysInMonth(currentDate));
     }
 
     onDateClick = selectedDay => {
@@ -45,7 +49,7 @@ class PersonalCalendars extends React.Component {
     onSeeMoreClick = selectedDay => {
         this.setState(prevState => ({ 
             showDateModal: !prevState.showDateModal,
-            selectedDate: !prevState.showAddEventModal? selectedDay: {},
+            selectedDate: !prevState.showDateModal? selectedDay: {},
         }));
     }
 
@@ -57,7 +61,20 @@ class PersonalCalendars extends React.Component {
     }
 
     handleSaveEvent = event => {
-        debugger;
+        this.props.dateEventActions.addEvent({ event, dateText: this.state.selectedDate.dateText });
+        this.setState(prevState=>({ 
+            showAddEventModal: !prevState.showAddEventModal,
+            selectedDate: !prevState.showAddEventModal? this.state.selectedDate: {},
+            switchAddEventModalState: !prevState.switchAddEventModalState,
+        }));
+    }
+
+    handleEditEvent = event => {
+        
+    }
+
+    handleDeleteEvent = event => {
+        
     }
 
     render() {
@@ -69,7 +86,7 @@ class PersonalCalendars extends React.Component {
                     getToday={this.getToday}
                 />
                 <Calendar 
-                    dateColumn={this.state.datesMonthArray}
+                    dateColumn={this.props.dateEvent.monthDateArray}
                     currentDate={this.state.currentDate}
                     onDateClick={this.onDateClick}
                     onSeeMoreClick={this.onSeeMoreClick}
@@ -80,6 +97,7 @@ class PersonalCalendars extends React.Component {
                     handleSaveEvent={this.handleSaveEvent}
                     onClose={this.onDateClick}
                     selectedDate={this.state.selectedDate}
+                    switchAddEventModalState={this.state.switchAddEventModalState}
                 />
                 <DateModal 
                     visible={this.state.showDateModal}
@@ -96,6 +114,20 @@ class PersonalCalendars extends React.Component {
             </div>
         );
     }
+
+    componentDidMount() {
+        this.props.dateEventActions.getMonthDateArray(getDaysInMonth(new Date()));
+    }
 }
 
-export default PersonalCalendars;
+const mapStateToProps = ( store ) => ({
+  dateEvent: store.dateEvent,
+});
+
+function mapDispatchToProps(dispatch) {
+    return {
+      dateEventActions: bindActionCreators(DateEventActions, dispatch),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PersonalCalendars);

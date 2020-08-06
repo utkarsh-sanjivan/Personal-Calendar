@@ -7,6 +7,10 @@
 
 }
 
+.event-modal-button-row {
+    text-align: end;
+}
+
 .event-modal-row {
     display: flex;
 }

@@ -23,13 +23,7 @@ export function getDaysInMonth(currentMonth) {
             formattedDate,
             day,
             dateText: day.getDate()+" "+getMonthString(day.getMonth())+" "+day.getFullYear(),
-            events: [
-                { name: 'Event 1', time: '03:00', description: 'Description 1', duration: '2 hrs', dateText:  day.getDate()+" "+getMonthString(day.getMonth())+" "+day.getFullYear(), eventType: 'b_day' },
-                { name: 'Event 2', time: '03:00', description: 'Description 2', duration: '2 hrs', dateText:  day.getDate()+" "+getMonthString(day.getMonth())+" "+day.getFullYear(), eventType: 'anniversary' },
-                { name: 'Event 3', time: '03:00', description: 'Description 3', duration: '2 hrs', dateText:  day.getDate()+" "+getMonthString(day.getMonth())+" "+day.getFullYear(), eventType: 'meeting' },
-                { name: 'Event 4', time: '03:00', description: 'Description 4', duration: '2 hrs', dateText:  day.getDate()+" "+getMonthString(day.getMonth())+" "+day.getFullYear(), eventType: 'conference' },
-                { name: 'Event 5', time: '03:00', description: 'Description 5', duration: '2 hrs', dateText:  day.getDate()+" "+getMonthString(day.getMonth())+" "+day.getFullYear(), eventType: 'others' },
-            ],
+            events: [],
             isToday:  dateFns.isSameDay(day, new Date()),
             isActive:  dateFns.isSameMonth(day, currentMonth),
         });

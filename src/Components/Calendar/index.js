@@ -12,7 +12,7 @@ const Calendar = props => (
             <Row>
                 {dateArr.map(date => 
                     <DateCard
-                        onDateClick={selectedDay => props.onDateClick(selectedDay)}
+                        onDateClick={selectedDay => { if(date.isActive) props.onDateClick(selectedDay) }}
                         onSeeMoreClick={selectedDay => props.onSeeMoreClick(selectedDay)}
                         onEventClick={selectedEvent => props.onEventClick(selectedEvent)}
                         formattedDate={date.formattedDate}

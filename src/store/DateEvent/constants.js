@@ -1,0 +1,2 @@
+export const GET_MONTH_DATE_ARRAY = 'GET_MONTH_DATE_ARRAY';
+export const ADD_EVENT = 'ADD_EVENT';

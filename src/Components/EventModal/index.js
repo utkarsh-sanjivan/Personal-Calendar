@@ -5,7 +5,8 @@ import './style.css';
 
 const EventModal = props => {
     const getEventType = () => {
-        const eventType = EVENT_TYPES.find(event => event.key===props.selectedEvent.eventType);
+        const key = props.selectedEvent.eventType && props.selectedEvent.eventType.key;
+        const eventType = EVENT_TYPES.find(event => event.key===key);
         return eventType && (
             <>
                 <i class={eventType.icon+'  event-modal-title-icon'} />
@@ -36,7 +37,7 @@ const EventModal = props => {
                 </div>
                 <div className='event-modal-row'>
                     <i class="fas fa-stopwatch event-modal-icon" />
-                    <div className='event-modal-text'>{props.selectedEvent && props.selectedEvent.duration}</div>
+                    <div className='event-modal-text'>{props.selectedEvent && `${props.selectedEvent.duration} ${props.selectedEvent.duration <2? 'hour': 'hours'}`}</div>
                 </div>
                 <div className='event-modal-row'>
                     <i class="far fa-calendar-alt event-modal-icon" />

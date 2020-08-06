@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import moment from 'moment';
 import { Modal, Input, Select, TimePicker } from 'antd';
 import { EVENT_TYPES } from './../../Utils/constant';
 import './style.css';
@@ -7,45 +8,71 @@ const { Option } = Select;
 const AddEventModal = props => {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
-    const [time, setTime] = useState('');
+    const [time, setTime] = useState(moment().format("hh:mm A"));
+    const [timeMoment, setTimeMoment] = useState(moment());
     const [duration, setDuration] = useState('');
     const [eventType, setEventType] = useState({ name: 'Meeting', key: 'meeting' });
     const [errorObj, setErrorObj] = useState({
         name: false,
         description: false,
-        time: false,
-        duration: false,
+        durationReq: false,
+        durationType: false,
     });
 
-    function onClose() {
+    useEffect(() => {
+        resetDefault();
+    }, [props.switchAddEventModalState])
+
+    function resetDefault() {
         setName('');
         setDescription('');
-        setTime('');
+        setTime(moment().format("hh:mm A"));
+        setTimeMoment(moment());
         setDuration('');
         setEventType({ name: 'Meeting', key: 'meeting' });
         setErrorObj({
             name: false,
             description: false,
-            time: false,
-            duration: false,
+            durationReq: false,
+            durationType: false,
         });
+    }
+
+    function onClose() {
+        resetDefault();
         props.onClose();
     }
 
     function onChange(time, timeString) {
         setTime(timeString);
+        setTimeMoment(time);
     }
 
     function onChangeName(text) {
+        setErrorObj({ ...errorObj, name: text.length === 0 });
         setName(text);
     }
 
     function onChangeDescription(text) {
+        setErrorObj({ ...errorObj, description: text.length === 0 });
         setDescription(text);
     }
 
     function onChangeDuration(text) {
-        setDuration(text);
+        var reg = /^\d+$/;
+        if (text.length === 0 || reg.test(text)) {
+            setErrorObj({
+                ...errorObj,
+                durationReq: text.length === 0,
+                durationType: false,
+            });
+            setDuration(text);
+        } else {
+            setErrorObj({
+                ...errorObj,
+                durationType: true,
+            });
+        }
     }
 
     function onChangeEventType(type) {
@@ -57,22 +84,23 @@ const AddEventModal = props => {
             setErrorObj({
                 name: false,
                 description: false,
-                time: false,
-                duration: false,
+                durationReq: false,
+                durationType: false,
             });
             props.handleSaveEvent({
                 name,
                 description,
                 time,
+                duration,
                 eventType,
                 date: props.selectedDate.day,
             });
         } else {
             setErrorObj({
+                ...errorObj,
                 name: name==='',
                 description: description==='',
-                time: time==='',
-                duration: duration==='',
+                durationReq: duration==='',
             });
         }
     }
@@ -114,9 +142,9 @@ const AddEventModal = props => {
                 <TimePicker
                     placeHolder="Select Event Time"
                     onChange={onChange}
-                    format='HH:mm'
+                    value={timeMoment}
+                    format='hh:mm A'
                 />
-                {errorObj.time?<div className="add-event-error-msg">** Required</div>: null}
             </div>
             <div className="add-event-key-container">
                 <div className="add-event-title">Event Duration (in hrs):</div>
@@ -124,7 +152,8 @@ const AddEventModal = props => {
                     value={duration}
                     onChange={e => onChangeDuration(e.target.value)}
                 />
-                {errorObj.name?<div className="add-event-error-msg">** Required</div>: null}
+                {errorObj.durationReq?<div className="add-event-error-msg">** Required</div>: null}
+                {errorObj.durationType?<div className="add-event-error-msg">** Number only</div>: null}
             </div>
         </Modal>
     );
