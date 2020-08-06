@@ -5,6 +5,14 @@ export function getMonthString(month) {
     return monthArr[month];
 }
 
+export function getMonthObj(dateText) {
+  const monthArr = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  const [ dd, mm, yyyy ] = dateText.split(' ');
+  const monthText = monthArr.indexOf(mm)+1;
+  const compText = `${monthText}/${dd}/${yyyy}`;
+  return new Date(compText);
+}
+
 export function getDaysInMonth(currentMonth) {
     const monthStart = dateFns.startOfMonth(currentMonth);
     const monthEnd = dateFns.endOfMonth(monthStart);

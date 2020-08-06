@@ -1,4 +1,4 @@
-import Firebase from './firebase';
+import firebase from './firebase';
  
 import React from 'react';
 
@@ -8,7 +8,7 @@ export default function withFirebase(OriginalComponent) {
             super(props);
         }
         render() {
-            return <OriginalComponent {...this.props} firebase={Firebase}/>
+            return <OriginalComponent {...this.props} firebase={firebase}/>
         }
     }
 }

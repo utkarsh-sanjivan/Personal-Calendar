@@ -1,24 +1,15 @@
-import app from 'firebase/app';
+import firebase from 'firebase';
 
 const config = {
-    // apiKey: "AIzaSyCm0C0Dr2ppiVi1WKMweHW1psRBMOgnxuo",
-    // authDomain: "calendar-app-f0c88.firebaseapp.com",
-    // databaseURL: "https://calendar-app-f0c88.firebaseio.com",
-    // projectId: "calendar-app-f0c88",
-    // storageBucket: "calendar-app-f0c88.appspot.com",
-    // messagingSenderId: "1022865556679",
-    apiKey: process.env.REACT_APP_API_KEY,
-    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-    databaseURL: process.env.REACT_APP_DATABASE_URL,
-    projectId: process.env.REACT_APP_PROJECT_ID,
-    storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-    messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+    apiKey: 'AIzaSyCm0C0Dr2ppiVi1WKMweHW1psRBMOgnxuo',
+    authDomain: 'calendar-app-f0c88.firebaseapp.com',
+    databaseURL: 'https://calendar-app-f0c88.firebaseio.com',
+    projectId: 'calendar-app-f0c88',
+    storageBucket: 'calendar-app-f0c88.appspot.com',
+    messagingSenderId: '1022865556679',
+    appId: '1:1022865556679:web:b2f3ea221012800f8ceae2',
+    measurementId: 'G-L01KHTCQ8L',
 };
 
-class Firebase {
-  constructor() {
-    app.initializeApp(config);
-  }
-}
- 
-export default Firebase;
+firebase.initializeApp(config);
+export default firebase;

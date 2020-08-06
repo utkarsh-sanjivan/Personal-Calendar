@@ -1,6 +1,7 @@
 import { 
     GET_MONTH_DATE_ARRAY,
     ADD_EVENT,
+    SAVE_FETCHED_EVENTS,
 } from './constants';
 
 const INITIAL_STATE = {
@@ -38,6 +39,21 @@ export function reducer ( state = INITIAL_STATE, action) {
                 ...state,
                 monthDateArray,
                 events,
+            };
+
+        case SAVE_FETCHED_EVENTS:
+            const monthArray = state.monthDateArray.map(week => {
+                return week.map(day => {
+                    if (action.payload.filter(element => element.dateText === day.dateText).length>0) {
+                        day.events = [...action.payload.filter(element => element.dateText === day.dateText)];
+                    }
+                    return day;
+                })
+            });
+            return {
+                ...state,
+                monthArray,
+                events: action.payload,
             };
 
         default: {
