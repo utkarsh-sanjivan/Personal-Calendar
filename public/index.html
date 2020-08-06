@@ -16,6 +16,31 @@
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script> -->
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyCm0C0Dr2ppiVi1WKMweHW1psRBMOgnxuo",
+        authDomain: "calendar-app-f0c88.firebaseapp.com",
+        databaseURL: "https://calendar-app-f0c88.firebaseio.com",
+        projectId: "calendar-app-f0c88",
+        storageBucket: "calendar-app-f0c88.appspot.com",
+        messagingSenderId: "1022865556679",
+        appId: "1:1022865556679:web:b2f3ea221012800f8ceae2",
+        measurementId: "G-L01KHTCQ8L"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      // firebase.analytics();
+    </script>
+
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
