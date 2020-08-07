@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
 import * as dateFns from 'date-fns';
 import { uuid } from 'uuidv4';
+import FuzzySearch from 'fuzzy-search';
 import Calendar from './../../Components/Calendar/index';
 import Header from './../../Components/Header/index';
 import DateModal from './../../Components/DateModal/index';
@@ -10,7 +11,7 @@ import AddEventModal from './../../Components/AddEventModal/index';
 import EventModal from './../../Components/EventModal/index';
 import * as DateEventActions from '../../store/DateEvent/actions';
 import withFirebase from './../../Components/Firebase/index';
-import { getDaysInMonth } from './../../Utils/dateFromatter';
+import { getDaysInMonth, getMonthObj } from './../../Utils/dateFromatter';
 import './style.css';
 
 class PersonalCalendars extends React.Component {
@@ -89,6 +90,17 @@ class PersonalCalendars extends React.Component {
         });
     }
 
+    onPressEnter = text => {
+        const searcher = new FuzzySearch(this.props.dateEvent.events, ['name', 'description'], {caseSensitive: false});
+        const result = searcher.search(text);
+        debugger;
+        if (result.length>0) {
+            console.log(getMonthObj(result[0].dateText));
+            this.props.dateEventActions.getMonthDateArray(getDaysInMonth(getMonthObj(result[0].dateText)));
+        }
+        debugger;
+    }
+
     render() {
         return (
             <div className="personal-calendar-container">
@@ -96,6 +108,7 @@ class PersonalCalendars extends React.Component {
                     currentDate={this.state.currentDate} 
                     navMonth={this.navMonth} 
                     getToday={this.getToday}
+                    onPressEnter={this.onPressEnter}
                 />
                 <Calendar 
                     dateColumn={this.props.dateEvent.monthDateArray}

@@ -15,7 +15,7 @@ const Header = props => (
             <span className="header-text">{props.currentDate.getFullYear()}</span>
         </div>
         <div style={{ width: '15%' }}>
-            <Search className="search-input"/>
+            <Search className="search-input" onPressEnter={e => props.onPressEnter(e.target.value)}/>
         </div>
     </div>
 );
