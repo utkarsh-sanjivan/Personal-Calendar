@@ -3,13 +3,6 @@
     margin-bottom: 20px;
     display: flex;
 }
-
-.header-text {
-    margin: 0px 10px;
-    min-width: 70px;
-    width: 70px;
-}
-
 .today-button {
     border-radius: 30px;
 }

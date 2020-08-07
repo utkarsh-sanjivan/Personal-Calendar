@@ -43,6 +43,18 @@ class PersonalCalendars extends React.Component {
         this.props.dateEventActions.getMonthDateArray(getDaysInMonth(currentDate));
     }
 
+    onChangeMonth = (value, option) => {
+        const currentDate = dateFns.setMonth(this.state.currentDate, option.index);
+        this.setState({ currentDate });
+        this.props.dateEventActions.getMonthDateArray(getDaysInMonth(currentDate));
+    }
+    
+    onChangeYear = (year) => {
+        const currentDate = dateFns.setYear(this.state.currentDate, year);
+        this.setState({ currentDate });
+        this.props.dateEventActions.getMonthDateArray(getDaysInMonth(currentDate));
+    }
+
     onDateClick = selectedDay => {
         this.setState(prevState => ({ 
             showAddEventModal: !prevState.showAddEventModal,
@@ -107,8 +119,10 @@ class PersonalCalendars extends React.Component {
         return (
             <div className="personal-calendar-container">
                 <Header 
-                    currentDate={this.state.currentDate} 
-                    navMonth={this.navMonth} 
+                    currentDate={this.state.currentDate}
+                    navMonth={this.navMonth}
+                    onChangeMonth={this.onChangeMonth}
+                    onChangeYear={this.onChangeYear}
                     getToday={this.getToday}
                     onSearch={this.onSearch}
                     onSelect={this.onSelect}
