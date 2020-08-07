@@ -24,6 +24,7 @@ class PersonalCalendars extends React.Component {
             showDateModal: false,
             showEventModal: false,
             switchAddEventModalState: false,
+            autoCompleteData: [],
         };
     }
 
@@ -90,15 +91,16 @@ class PersonalCalendars extends React.Component {
         });
     }
 
-    onPressEnter = text => {
+    onSearch = text => {
         const searcher = new FuzzySearch(this.props.dateEvent.events, ['name', 'description'], {caseSensitive: false});
-        const result = searcher.search(text);
-        debugger;
-        if (result.length>0) {
-            console.log(getMonthObj(result[0].dateText));
-            this.props.dateEventActions.getMonthDateArray(getDaysInMonth(getMonthObj(result[0].dateText)));
-        }
-        debugger;
+        this.setState({ 
+            autoCompleteData: searcher.search(text).map(event => ({ ...event, value: event.name })),
+        });
+    }
+    
+    onSelect = (value, option) => {
+        this.props.dateEventActions.getMonthDateArray(getDaysInMonth(getMonthObj(option.dateText)));
+        this.setState({ currentDate: getMonthObj(option.dateText) });
     }
 
     render() {
@@ -108,7 +110,9 @@ class PersonalCalendars extends React.Component {
                     currentDate={this.state.currentDate} 
                     navMonth={this.navMonth} 
                     getToday={this.getToday}
-                    onPressEnter={this.onPressEnter}
+                    onSearch={this.onSearch}
+                    onSelect={this.onSelect}
+                    autoCompleteData={this.state.autoCompleteData}
                 />
                 <Calendar 
                     dateColumn={this.props.dateEvent.monthDateArray}

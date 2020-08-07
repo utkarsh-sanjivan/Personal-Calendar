@@ -6,7 +6,7 @@ import './style.css';
 const Calendar = props => (
     <div className='calendar-container'>
         <Row>
-            {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map(day=> <DateCard day={day}/>)}
+            {['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'].map(day=> <DateCard day={day}/>)}
         </Row>
         {props.dateColumn.map(dateArr => (
             <Row>
