@@ -12,3 +12,8 @@
     background-color: #e97053 !important;
     font-weight: 500 !important;
 }
+
+.ant-modal-title {
+    color: #fff;
+    font-weight: 600;
+}

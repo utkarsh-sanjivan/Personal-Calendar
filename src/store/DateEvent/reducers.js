@@ -46,7 +46,7 @@ export function reducer ( state = INITIAL_STATE, action) {
             const monthArray = state.monthDateArray.map(week => {
                 return week.map(day => {
                     if (action.payload.filter(element => element.dateText === day.dateText).length>0) {
-                        day.events = [...action.payload.filter(element => element.dateText === day.dateText)];
+                        day.events = [...action.payload.filter(element => element.dateText === day.dateText)].reverse();
                     }
                     return day;
                 })
