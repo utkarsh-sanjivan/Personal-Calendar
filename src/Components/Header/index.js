@@ -11,7 +11,7 @@ const { Option } = Select;
 const Header = props => (
     <div className="calendar-header-container">
         <div className='calendar-header-left'>
-            <div  className='calendar-header-top-left'>
+            <div>
                 <CalendarButton className="today-button" onClick={props.getToday}>Today</CalendarButton>
                 <span>
                     <CalendarButton className="nav-button" onClick={() => props.navMonth('prev')}><LeftOutlined /></CalendarButton>

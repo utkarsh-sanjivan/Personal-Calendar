@@ -23,9 +23,9 @@ export function getDaysInMonth(currentMonth, todayDates) {
 
     let days = [];
     let formattedDate = '';
-    for (let day = startDate; day <= endDate; day = dateFns.addDays(day, 1)) {
-      const tempDay = day;
+    for (let day = startDate; day <= endDate; day) {
       for (let i = 0; i < 7; i++) {
+        const tempDay = day;
         formattedDate = dateFns.format(day, dateFormat);
         days.push({ 
           formattedDate,
