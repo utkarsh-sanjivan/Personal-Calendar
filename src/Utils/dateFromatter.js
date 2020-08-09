@@ -13,7 +13,7 @@ export function getMonthObj(dateText) {
   return new Date(compText);
 }
 
-export function getDaysInMonth(currentMonth) {
+export function getDaysInMonth(currentMonth, todayDates) {
     const monthStart = dateFns.startOfMonth(currentMonth);
     const monthEnd = dateFns.endOfMonth(monthStart);
     const startDate = dateFns.startOfWeek(monthStart);
@@ -32,7 +32,7 @@ export function getDaysInMonth(currentMonth) {
             day,
             dateText: day.getDate()+" "+getMonthString(day.getMonth())+" "+day.getFullYear(),
             events: [],
-            isToday:  dateFns.isSameDay(day, new Date()),
+            isToday:  todayDates.some(today => dateFns.isSameDay(day, today)),
             isActive:  dateFns.isSameMonth(day, currentMonth),
         });
         day = dateFns.addDays(day, 1);

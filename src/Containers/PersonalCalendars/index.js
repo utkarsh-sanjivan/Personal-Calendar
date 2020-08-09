@@ -18,6 +18,7 @@ class PersonalCalendars extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            todayDates: [new Date()],
             currentDate: new Date(),
             selectedDate: {},
             showAddEventModal: false,
@@ -32,28 +33,29 @@ class PersonalCalendars extends React.Component {
     getToday = () => {
         this.setState({
             currentDate: new Date(),
+            todayDates: [new Date()],
         });
-        this.props.dateEventActions.getMonthDateArray(getDaysInMonth(new Date()));
+        this.props.dateEventActions.getMonthDateArray(getDaysInMonth(new Date(), this.state.todayDates));
     }
 
     navMonth = (ditection) => {
         const currentDate = ditection === 'prev'? 
             new Date(dateFns.format(dateFns.subMonths(this.state.currentDate, 1), 'MM/dd/yyyy'))
             : new Date(dateFns.format(dateFns.addMonths(this.state.currentDate, 1), 'MM/dd/yyyy'));
-        this.setState({ currentDate });
-        this.props.dateEventActions.getMonthDateArray(getDaysInMonth(currentDate));
+        this.setState({ currentDate, todayDates: [new Date()] });
+        this.props.dateEventActions.getMonthDateArray(getDaysInMonth(currentDate, this.state.todayDates));
     }
 
     onChangeMonth = (value, option) => {
         const currentDate = dateFns.setMonth(this.state.currentDate, option.index);
-        this.setState({ currentDate });
-        this.props.dateEventActions.getMonthDateArray(getDaysInMonth(currentDate));
+        this.setState({ currentDate, todayDates: [new Date()] });
+        this.props.dateEventActions.getMonthDateArray(getDaysInMonth(currentDate, this.state.todayDates));
     }
     
     onChangeYear = (year) => {
         const currentDate = dateFns.setYear(this.state.currentDate, year);
-        this.setState({ currentDate });
-        this.props.dateEventActions.getMonthDateArray(getDaysInMonth(currentDate));
+        this.setState({ currentDate, todayDates: [new Date()] });
+        this.props.dateEventActions.getMonthDateArray(getDaysInMonth(currentDate, this.state.todayDates));
     }
 
     onDateClick = selectedDay => {
@@ -122,8 +124,8 @@ class PersonalCalendars extends React.Component {
     }
     
     onSelect = (value, option) => {
-        this.props.dateEventActions.getMonthDateArray(getDaysInMonth(getMonthObj(option.dateText)));
-        this.setState({ currentDate: getMonthObj(option.dateText) });
+        this.setState({ currentDate: getMonthObj(option.dateText), todayDates: [new Date(), new Date(option.dateText)] });
+        this.props.dateEventActions.getMonthDateArray(getDaysInMonth(getMonthObj(option.dateText), [new Date(), new Date(option.dateText)]));
     }
 
     render() {
@@ -172,7 +174,7 @@ class PersonalCalendars extends React.Component {
 
     componentDidMount() {
         this.fetchAllEvents();
-        this.props.dateEventActions.getMonthDateArray(getDaysInMonth(new Date()));
+        this.props.dateEventActions.getMonthDateArray(getDaysInMonth(new Date(), this.state.todayDates));
     }
 }
 
