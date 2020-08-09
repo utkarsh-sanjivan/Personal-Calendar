@@ -8,7 +8,7 @@ import './style.css';
 const DateModal = props => {
     const tableColumns = [
         {
-            title: <div className="event-list-header">Name</div>,
+            title: <div>Name</div>,
             dataIndex: 'name',
             key: 'name',
             render: (value, record) => (
@@ -16,7 +16,7 @@ const DateModal = props => {
             ),
         },
         {
-            title: <div className="event-list-header">Time</div>,
+            title: <div>Time</div>,
             dataIndex: 'time',
             key: 'time',
             render: (value, record) => (
@@ -24,7 +24,7 @@ const DateModal = props => {
             ),
         },
         {
-            title: <div className="event-list-header">Description</div>,
+            title: <div>Description</div>,
             dataIndex: 'description',
             key: 'description',
             render: (value, record) => (
@@ -32,7 +32,7 @@ const DateModal = props => {
             ),
         },
         {
-            title: <div className="event-list-header">Duration</div>,
+            title: <div>Duration</div>,
             dataIndex: 'duration',
             key: 'duration',
             render: (value, record) => (
@@ -46,7 +46,7 @@ const DateModal = props => {
             title={
                 <div style={{ display: 'flex' }}>
                     <CalendarOutlined className='date-modal-calendar-icon'/>
-                    <div className="date-modal-title">Events on {props.selectedDate.dateText}</div>
+                    <div>Events on {props.selectedDate.dateText}</div>
                 </div>
             }
         >

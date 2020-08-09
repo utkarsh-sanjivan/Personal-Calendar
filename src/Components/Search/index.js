@@ -11,7 +11,6 @@ const SearchField = props => (
         >
         <Input 
             placeholder="Search Events"
-            className='autocomplete-input'
             prefix={
                 <Tooltip title="Search Event">
                     <SearchOutlined className="search-icon"/>
