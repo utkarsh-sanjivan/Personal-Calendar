@@ -23,7 +23,8 @@ export function getDaysInMonth(currentMonth, todayDates) {
 
     let days = [];
     let formattedDate = '';
-    for (let day = startDate; day <= endDate; day) {
+    for (let day = startDate; day <= endDate; day = dateFns.addDays(day, 1)) {
+      const tempDay = day;
       for (let i = 0; i < 7; i++) {
         formattedDate = dateFns.format(day, dateFormat);
         days.push({ 
@@ -31,7 +32,7 @@ export function getDaysInMonth(currentMonth, todayDates) {
           day,
           dateText: day.getDate()+" "+getMonthString(day.getMonth())+" "+day.getFullYear(),
           events: [],
-          isToday:  todayDates.some(today => dateFns.isSameDay(day, today)),
+          isToday:  todayDates.some(today => dateFns.isSameDay(tempDay, today)),
           isActive:  dateFns.isSameMonth(day, currentMonth),
         });
         day = dateFns.addDays(day, 1);
