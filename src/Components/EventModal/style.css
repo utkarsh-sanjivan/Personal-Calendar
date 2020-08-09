@@ -1,0 +1,38 @@
+.event-modal-title-container {
+    display: flex;
+    font-size: 24px;
+    color: #fff;
+}
+
+.event-modal-container {
+    color: #fff;
+}
+
+.event-modal-button-row {
+    text-align: end;
+}
+
+.event-modal-row {
+    display: flex;
+}
+
+.event-modal-text {
+    font-size: 18px;
+}
+
+.event-modal-icon {
+    font-size: 22px;
+    margin: 1px 5px 10px 0px;
+    width: 30px;
+}
+
+.event-modal-title-text {
+    font-size: 24px;
+    margin-right: 5px;
+}
+
+.event-modal-title-icon {
+    margin-right: 5px;
+    margin-top: 1px;
+    font-size: 22px;
+}
