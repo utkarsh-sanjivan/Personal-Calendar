@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/Personal-Calendar/static/css/main.70b6cd8c.chunk.css",
-    "main.js": "/Personal-Calendar/static/js/main.2e2c0340.chunk.js",
-    "main.js.map": "/Personal-Calendar/static/js/main.2e2c0340.chunk.js.map",
+    "main.css": "/Personal-Calendar/static/css/main.17c47c99.chunk.css",
+    "main.js": "/Personal-Calendar/static/js/main.332481c0.chunk.js",
+    "main.js.map": "/Personal-Calendar/static/js/main.332481c0.chunk.js.map",
     "runtime-main.js": "/Personal-Calendar/static/js/runtime-main.b9184d74.js",
     "runtime-main.js.map": "/Personal-Calendar/static/js/runtime-main.b9184d74.js.map",
     "static/css/2.9c8c8187.chunk.css": "/Personal-Calendar/static/css/2.9c8c8187.chunk.css",
     "static/js/2.7e47ca9e.chunk.js": "/Personal-Calendar/static/js/2.7e47ca9e.chunk.js",
     "static/js/2.7e47ca9e.chunk.js.map": "/Personal-Calendar/static/js/2.7e47ca9e.chunk.js.map",
     "index.html": "/Personal-Calendar/index.html",
-    "precache-manifest.5a5b70275d5a7db734183319f2b673bf.js": "/Personal-Calendar/precache-manifest.5a5b70275d5a7db734183319f2b673bf.js",
+    "precache-manifest.249239fd8dc496d78d2e65e404c87277.js": "/Personal-Calendar/precache-manifest.249239fd8dc496d78d2e65e404c87277.js",
     "service-worker.js": "/Personal-Calendar/service-worker.js",
     "static/css/2.9c8c8187.chunk.css.map": "/Personal-Calendar/static/css/2.9c8c8187.chunk.css.map",
-    "static/css/main.70b6cd8c.chunk.css.map": "/Personal-Calendar/static/css/main.70b6cd8c.chunk.css.map",
+    "static/css/main.17c47c99.chunk.css.map": "/Personal-Calendar/static/css/main.17c47c99.chunk.css.map",
     "static/js/2.7e47ca9e.chunk.js.LICENSE.txt": "/Personal-Calendar/static/js/2.7e47ca9e.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.b9184d74.js",
     "static/css/2.9c8c8187.chunk.css",
     "static/js/2.7e47ca9e.chunk.js",
-    "static/css/main.70b6cd8c.chunk.css",
-    "static/js/main.2e2c0340.chunk.js"
+    "static/css/main.17c47c99.chunk.css",
+    "static/js/main.332481c0.chunk.js"
   ]
 }
