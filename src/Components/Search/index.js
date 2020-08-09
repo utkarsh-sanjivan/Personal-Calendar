@@ -7,9 +7,11 @@ const SearchField = props => (
         <AutoComplete 
             {...props}
             options={props.autoCompleteData}
+            autoFocus
         >
         <Input 
             placeholder="Search Events"
+            className='autocomplete-input'
             prefix={
                 <Tooltip title="Search Event">
                     <SearchOutlined className="search-icon"/>

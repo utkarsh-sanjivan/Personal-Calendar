@@ -1,8 +1,10 @@
 .calendar-header-container {
-    padding-top: 30px;    
+    border: 1px #fff solid;
+    padding: 20px;
     display: flex;
     width: 80%;
-    margin: 0px auto 20px auto;
+    margin: 0px auto;
+    background-color: #525a62;
 }
 
 .calendar-header-left {
@@ -29,6 +31,8 @@
 .nav-button {
     border: none;
     box-shadow: none;
+    background-color: #525a61 !important;
+    color: #fff;
 }
 
 .search-input {

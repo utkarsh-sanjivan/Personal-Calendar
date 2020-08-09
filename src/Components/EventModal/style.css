@@ -1,10 +1,11 @@
 .event-modal-title-container {
     display: flex;
     font-size: 24px;
+    color: #fff;
 }
 
 .event-modal-container {
-
+    color: #fff;
 }
 
 .event-modal-button-row {

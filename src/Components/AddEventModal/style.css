@@ -1,7 +1,70 @@
 .date-modal-title {
-    
+    color: #fff;
+}
+
+.ant-modal-header  {
+    background-color: #525a62;
+}
+
+.ant-modal-body {
+    background-color: #e97053;
+}
+
+.ant-modal-footer {
+    background-color: #525a62;
 }
 
 .add-event-error-msg {
-    color: red;
+    color: #fff;
+    font-weight: 600;
+}
+
+.add-event-title {
+    color: #fff;
+    font-weight: 500;
+}
+
+.ant-input {
+    background-color: #e97053;
+    color: #fff;
+    font-weight: 500;
+}
+
+.ant-select-selector {
+    background-color: #e97053 !important;
+    color: #fff;
+    font-weight: 500;
+}
+
+.ant-picker {
+    background-color: #e97053 !important;
+}
+
+.ant-picker-input > input {
+    color: #fff;
+    font-weight: 500;
+}
+
+.ant-modal-close-x {
+    color: #fff;
+}
+
+.ant-picker-suffix {
+    color: #fff;
+}
+
+.ant-select-arrow {
+    color: #fff;
+}
+
+.ant-btn{
+    background-color: #e97053;
+    color: #fff;
+    font-weight: 500;
+    border-color: #fff;
+}
+
+.ant-input-affix-wrapper {
+    background-color: #e97053;
+    color: #fff;
 }
