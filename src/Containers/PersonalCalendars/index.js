@@ -11,6 +11,7 @@ import AddEventModal from './../../Components/AddEventModal/index';
 import EventModal from './../../Components/EventModal/index';
 import * as DateEventActions from '../../store/DateEvent/actions';
 import withFirebase from './../../Components/Firebase/index';
+import Loader from './../../Components/Loader/index';
 import { getDaysInMonth, getMonthObj } from './../../Utils/dateFromatter';
 import './style.css';
 
@@ -131,43 +132,47 @@ class PersonalCalendars extends React.Component {
     render() {
         return (
             <div className="personal-calendar-container">
-                <Header 
-                    currentDate={this.state.currentDate}
-                    navMonth={this.navMonth}
-                    onChangeMonth={this.onChangeMonth}
-                    onChangeYear={this.onChangeYear}
-                    getToday={this.getToday}
-                    onSearch={this.onSearch}
-                    onSelect={this.onSelect}
-                    autoCompleteData={this.state.autoCompleteData}
-                />
-                <Calendar 
-                    dateColumn={this.props.dateEvent.monthDateArray}
-                    currentDate={this.state.currentDate}
-                    onDateClick={this.onDateClick}
-                    onSeeMoreClick={this.onSeeMoreClick}
-                    onEventClick={this.onEventClick}
-                />
-                <AddEventModal 
-                    visible={this.state.showAddEventModal}
-                    handleSaveEvent={this.handleSaveEvent}
-                    onClose={this.onDateClick}
-                    selectedDate={this.state.selectedDate}
-                    switchAddEventModalState={this.state.switchAddEventModalState}
-                />
-                <DateModal 
-                    visible={this.state.showDateModal}
-                    selectedDate={this.state.selectedDate}
-                    onTitleClick={this.onTitleClick}
-                    onOk={this.onSeeMoreClick}
-                    onCancel={this.onSeeMoreClick}
-                />
-                <EventModal 
-                    visible={this.state.showEventModal}
-                    selectedEvent={this.state.selectedEvent}
-                    onOk={this.onEventClick}
-                    onCancel={this.onEventClick}
-                />
+                {this.props.dateEvent.loading ?
+                <Loader />
+                : <>
+                    <Header 
+                        currentDate={this.state.currentDate}
+                        navMonth={this.navMonth}
+                        onChangeMonth={this.onChangeMonth}
+                        onChangeYear={this.onChangeYear}
+                        getToday={this.getToday}
+                        onSearch={this.onSearch}
+                        onSelect={this.onSelect}
+                        autoCompleteData={this.state.autoCompleteData}
+                    />
+                    <Calendar 
+                        dateColumn={this.props.dateEvent.monthDateArray}
+                        currentDate={this.state.currentDate}
+                        onDateClick={this.onDateClick}
+                        onSeeMoreClick={this.onSeeMoreClick}
+                        onEventClick={this.onEventClick}
+                    />
+                    <AddEventModal 
+                        visible={this.state.showAddEventModal}
+                        handleSaveEvent={this.handleSaveEvent}
+                        onClose={this.onDateClick}
+                        selectedDate={this.state.selectedDate}
+                        switchAddEventModalState={this.state.switchAddEventModalState}
+                    />
+                    <DateModal 
+                        visible={this.state.showDateModal}
+                        selectedDate={this.state.selectedDate}
+                        onTitleClick={this.onTitleClick}
+                        onOk={this.onSeeMoreClick}
+                        onCancel={this.onSeeMoreClick}
+                    />
+                    <EventModal 
+                        visible={this.state.showEventModal}
+                        selectedEvent={this.state.selectedEvent}
+                        onOk={this.onEventClick}
+                        onCancel={this.onEventClick}
+                    />
+                </>}
             </div>
         );
     }

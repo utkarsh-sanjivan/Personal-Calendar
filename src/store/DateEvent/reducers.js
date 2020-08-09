@@ -7,6 +7,7 @@ import {
 const INITIAL_STATE = {
     monthDateArray: [],
     events: [],
+    loading: true,
 };
 
 export function reducer ( state = INITIAL_STATE, action) {
@@ -54,6 +55,7 @@ export function reducer ( state = INITIAL_STATE, action) {
                 ...state,
                 monthArray,
                 events: action.payload,
+                loading: false,
             };
 
         default: {

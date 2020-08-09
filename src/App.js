@@ -1,11 +1,11 @@
 import React from 'react';
-import Calendar from './Containers/PersonalCalendars/index';
+import PersonalCalendars from './Containers/PersonalCalendars/index';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <Calendar />
+      <PersonalCalendars />
     </div>
   );
 }
