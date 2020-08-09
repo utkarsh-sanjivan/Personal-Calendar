@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/Personal-Calendar/static/css/main.528ebf75.chunk.css",
+    "main.js": "/Personal-Calendar/static/js/main.ace74839.chunk.js",
+    "main.js.map": "/Personal-Calendar/static/js/main.ace74839.chunk.js.map",
+    "runtime-main.js": "/Personal-Calendar/static/js/runtime-main.b9184d74.js",
+    "runtime-main.js.map": "/Personal-Calendar/static/js/runtime-main.b9184d74.js.map",
+    "static/css/2.9c8c8187.chunk.css": "/Personal-Calendar/static/css/2.9c8c8187.chunk.css",
+    "static/js/2.7e47ca9e.chunk.js": "/Personal-Calendar/static/js/2.7e47ca9e.chunk.js",
+    "static/js/2.7e47ca9e.chunk.js.map": "/Personal-Calendar/static/js/2.7e47ca9e.chunk.js.map",
+    "index.html": "/Personal-Calendar/index.html",
+    "precache-manifest.11bd95295ad9ccadea69f0f781985957.js": "/Personal-Calendar/precache-manifest.11bd95295ad9ccadea69f0f781985957.js",
+    "service-worker.js": "/Personal-Calendar/service-worker.js",
+    "static/css/2.9c8c8187.chunk.css.map": "/Personal-Calendar/static/css/2.9c8c8187.chunk.css.map",
+    "static/css/main.528ebf75.chunk.css.map": "/Personal-Calendar/static/css/main.528ebf75.chunk.css.map",
+    "static/js/2.7e47ca9e.chunk.js.LICENSE.txt": "/Personal-Calendar/static/js/2.7e47ca9e.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b9184d74.js",
+    "static/css/2.9c8c8187.chunk.css",
+    "static/js/2.7e47ca9e.chunk.js",
+    "static/css/main.528ebf75.chunk.css",
+    "static/js/main.ace74839.chunk.js"
+  ]
+}
