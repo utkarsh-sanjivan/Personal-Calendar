@@ -1,68 +1,36 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## About
+Personal Calendar is an application which holds an accurate calendar where one can add events to a date and view that event. The application provides the feature to navigate through the dates from 1970 to 2099. One can navigate throught months using the arrow button in the calendar header or can use the drop down to just jump to a spific month or year. It also has a button to jump to current month by using the `Today` button. It also provides the feature to search the event and jump to that specific month of the event.__
+For adding an event click on the date and then a modal will open which will ask for the name, description, date, time and duration of the event. To view and event click on the event name, a modal will open where the details of the event will be displayed. When there is more than 3 events on a particular date, `more` button appears on clicking which a modal opens listing the events on that day. On can also view the details of the particular event in that list by just clicking on it. The code for the application is in my github profile, following is the link for that,
+
+[Personal Calendar(https://github.com/utkarsh-sanjivan/Personal-Calendar)
 
 ## Available Scripts
+Following are the scripts that are available,<br />
+To start the application
+```bash
+npm run start
+```
+To build the application
+```bash
+npm run build
+```
+To run the test cases
+```bash
+npm run test
+```
+To deploy the application on the Github.
+```bash
+npm run deploy
+```
 
-In the project directory, you can run:
+## Accessing the application
+The application is deployed on https://utkarsh-sanjivan.github.io/Personal-Calendar/ and can be accessed there.
 
-### `yarn start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Technologies Used
+* HTML
+* CSS
+* React
+* Redux
+* Saga
+* Ant Design
+* Firebae

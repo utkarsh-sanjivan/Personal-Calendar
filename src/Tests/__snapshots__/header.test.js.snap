@@ -7,9 +7,7 @@ exports[`Test Header Component 1`] = `
   <div
     className="calendar-header-left"
   >
-    <div
-      className="calendar-header-top-left"
-    >
+    <div>
       <button
         className="ant-btn today-button"
         onClick={[Function]}
