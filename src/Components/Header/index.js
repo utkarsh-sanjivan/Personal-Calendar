@@ -21,14 +21,14 @@ const Header = props => (
             <div  className='calendar-header-top-right'>
                 <Select 
                     className="search-month-year-input" 
-                    defaultValue={getMonthString(props.currentDate.getMonth())} 
+                    value={getMonthString(props.currentDate.getMonth())} 
                     onChange={props.onChangeMonth}
                 >
                     {MONTHS.map(month => <Option {...month} value={month.name}>{month.name}</Option>)}
                 </Select>
                 <Select 
                     className="search-month-year-input" 
-                    defaultValue={props.currentDate.getFullYear()} 
+                    value={props.currentDate.getFullYear()} 
                     onChange={props.onChangeYear}
                 >
                     {Array(130).fill(null).map((__, index) => <Option index={index} value={index+1970}>{index+1970}</Option>)}
