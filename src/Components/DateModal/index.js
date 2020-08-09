@@ -12,7 +12,7 @@ const DateModal = props => {
             dataIndex: 'name',
             key: 'name',
             render: (value, record) => (
-                <div className="event-modal-title">{value}</div>
+                <div className="event-modal-title" onClick={() => props.onTitleClick(record)}>{value}</div>
             ),
         },
         {

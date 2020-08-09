@@ -1,15 +1,11 @@
 import React from 'react';
-import { Card } from 'antd';
 import './style.css';
 
 const DateCard = props => (
-    <Card 
-        className="card-container"
-        {...props}
-    >
+    <div  className="card-container">
             {props.day?
-                <div>{props.day}</div>
-                :  <React.Fragment>
+                <div className={props.textClassName}>{props.day}</div>
+                :  <div className={props.textClassName}>
                     <div className="date-text" onClick={() => props.onDateClick(props.date)}>{props.formattedDate}</div>
                     {props.isActive && props.events && props.events.slice(0,3).map((event, index) => {
                         return index ===2 && props.events.length>3?
@@ -19,9 +15,9 @@ const DateCard = props => (
                             </p>
                             : <p className="content-para" onClick={() => props.onEventClick(event)}>{event.name}</p>
                     })}
-                </React.Fragment>
+                </div>
             }
-    </Card>
+    </div>
 );
 
 export default DateCard;

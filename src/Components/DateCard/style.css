@@ -10,11 +10,13 @@
 .content-para {
     margin: 0px;
     cursor: pointer;
+    font-size: 12px;
 }
 
 .content-para-2 {
     margin: 0px;
     display: flex;
+    font-size: 12px;
 }
 
 .more-text {

@@ -25,6 +25,7 @@ class PersonalCalendars extends React.Component {
             showEventModal: false,
             switchAddEventModalState: false,
             autoCompleteData: [],
+            wasDateModalOpened: false,
         };
     }
 
@@ -73,6 +74,17 @@ class PersonalCalendars extends React.Component {
         this.setState(prevState => ({ 
             showEventModal: !prevState.showEventModal,
             selectedEvent: !prevState.showEventModal? selectedEvent: {},
+            showDateModal: prevState.wasDateModalOpened,
+            wasDateModalOpened: false,
+        }));
+    }
+
+    onTitleClick  = selectedEvent => {
+        this.setState(prevState => ({ 
+            showEventModal: !prevState.showEventModal,
+            selectedEvent: !prevState.showEventModal? selectedEvent: {},
+            showDateModal: false,
+            wasDateModalOpened: true,
         }));
     }
 
@@ -86,7 +98,6 @@ class PersonalCalendars extends React.Component {
             name: event.name,
             time: event.time,
         });
-        // this.props.dateEventActions.addEvent({ event, dateText: this.state.selectedDate.dateText });
         this.setState(prevState=>({ 
             showAddEventModal: !prevState.showAddEventModal,
             selectedDate: !prevState.showAddEventModal? this.state.selectedDate: {},
@@ -145,6 +156,7 @@ class PersonalCalendars extends React.Component {
                 <DateModal 
                     visible={this.state.showDateModal}
                     selectedDate={this.state.selectedDate}
+                    onTitleClick={this.onTitleClick}
                     onOk={this.onSeeMoreClick}
                     onCancel={this.onSeeMoreClick}
                 />

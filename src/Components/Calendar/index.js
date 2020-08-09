@@ -5,11 +5,11 @@ import './style.css';
 
 const Calendar = props => (
     <div className='calendar-container'>
-        <Row>
-            {['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'].map(day=> <DateCard day={day}/>)}
+        <Row className='calendar-days-row'>
+            {['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'].map(day=> <DateCard textClassName='day-card' day={day}/>)}
         </Row>
         {props.dateColumn.map(dateArr => (
-            <Row>
+            <Row className='calendar-date-rows'>
                 {dateArr.map(date => 
                     <DateCard
                         onDateClick={selectedDay => { if(date.isActive) props.onDateClick(selectedDay) }}
@@ -19,7 +19,7 @@ const Calendar = props => (
                         isActive={date.isActive}
                         events={date.events}
                         date={date}
-                        className={
+                        textClassName={
                             date.isActive?
                                 date.isToday? 
                                     'today-date-card'
